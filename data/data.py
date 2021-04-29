@@ -8,6 +8,22 @@ mydb = mysql.connector.connect(
    charset = "utf8"
 )
 
+sql = '''CREATE TABLE attractions (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    category VARCHAR(255),
+    description TEXT,
+    address TEXT,
+    transport TEXT,
+    mrt VARCHAR(255),
+    latitude VARCHAR(55),
+    longitude VARCHAR(55),
+    images TEXT
+    );'''
+
+
+mycursor.execute(sql)
+
 mycursor = mydb.cursor()
 
 
@@ -35,7 +51,7 @@ with open("taipei-attractions.json","r",encoding="utf-8") as file:
                imgUrlList.append(imgUrl)
         images_url = json.dumps(imgUrlList)
 
-        cursor.execute(
+        mycursor.execute(
             "INSERT INTO attractions(id, name, category, description, address, transport, mrt, latitude, longitude, images) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
             (id, name, category, description, address, transport, mrt, latitude, longitude, images_url)
         )
