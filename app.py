@@ -11,8 +11,8 @@ app.config["JSON_SORT_KEYS"] = False
 # MySQL連線
 mydb = mysql.connector.connect(
     host='localhost',
-    user=os.environ.get('DB_USER'),
-    password=os.environ.get('DB_PASS'),
+    user='root',
+    password='123',
     database='taipei',
     charset='utf8'
 )
@@ -188,4 +188,4 @@ def get_attractionById(attractionId):
         return jsonify(errormsg)
 
 
-app.run(port=3000, debug=True)
+app.run(host="0.0.0.0",port=3000)

@@ -2,11 +2,15 @@ import json,mysql.connector,os
 
 mydb = mysql.connector.connect(
    host = "localhost",
-   user = os.environ.get('DB_USER'),
-   password = os.environ.get('DB_PASS'),
+   port = 3306,
+   user = 'root',
+   password = '123',
    database = "taipei",
    charset = "utf8"
 )
+
+mycursor = mydb.cursor()
+
 
 sql = '''CREATE TABLE attractions (
     id INT PRIMARY KEY,
@@ -23,9 +27,6 @@ sql = '''CREATE TABLE attractions (
 
 
 mycursor.execute(sql)
-
-mycursor = mydb.cursor()
-
 
 with open("taipei-attractions.json","r",encoding="utf-8") as file:
     data_dic = json.load(file)
