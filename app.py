@@ -12,7 +12,7 @@ app.config["JSON_SORT_KEYS"] = False
 mydb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='c5vvbq123',
+    password='password',
     database='taipei',
     charset='utf8'
 )
@@ -188,5 +188,5 @@ def get_attractionById(attractionId):
         return jsonify(errormsg)
 
 
-# app.run(host="0.0.0.0",port=3000)
-app.run(port=3000,debug=True)
+app.run(host="0.0.0.0",port=3000)
+#app.run(port=3000,debug=True)
